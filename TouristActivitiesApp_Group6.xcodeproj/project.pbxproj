@@ -13,6 +13,9 @@
 		E33D7D8027F4B6F700D852B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E33D7D7E27F4B6F700D852B9 /* Main.storyboard */; };
 		E33D7D8227F4B6F800D852B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E33D7D8127F4B6F800D852B9 /* Assets.xcassets */; };
 		E33D7D8527F4B6F800D852B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E33D7D8327F4B6F800D852B9 /* LaunchScreen.storyboard */; };
+		E38947E227F4DB880028E6FA /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D627F4DB870028E6FA /* SourceSansPro-Black.ttf */; };
+		E38947E327F4DB880028E6FA /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */; };
+		E38947E427F4DB880028E6FA /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		E33D7D8127F4B6F800D852B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E33D7D8427F4B6F800D852B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E33D7D8627F4B6F800D852B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E38947D627F4DB870028E6FA /* SourceSansPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.ttf"; sourceTree = "<group>"; };
+		E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		E33D7D7727F4B6F700D852B9 /* TouristActivitiesApp_Group6 */ = {
 			isa = PBXGroup;
 			children = (
+				E38947D027F4DA6B0028E6FA /* Resources */,
+				E38947CF27F4D8DF0028E6FA /* db */,
+				E38947CE27F4D8D80028E6FA /* Model */,
+				E38947CD27F4D8CA0028E6FA /* ViewControllers */,
 				E33D7D7827F4B6F700D852B9 /* AppDelegate.swift */,
 				E33D7D7A27F4B6F700D852B9 /* SceneDelegate.swift */,
-				E33D7D7C27F4B6F700D852B9 /* ViewController.swift */,
 				E33D7D7E27F4B6F700D852B9 /* Main.storyboard */,
-				E33D7D8127F4B6F800D852B9 /* Assets.xcassets */,
 				E33D7D8327F4B6F800D852B9 /* LaunchScreen.storyboard */,
+				E33D7D8127F4B6F800D852B9 /* Assets.xcassets */,
 				E33D7D8627F4B6F800D852B9 /* Info.plist */,
 			);
 			path = TouristActivitiesApp_Group6;
+			sourceTree = "<group>";
+		};
+		E38947CD27F4D8CA0028E6FA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E33D7D7C27F4B6F700D852B9 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E38947CE27F4D8D80028E6FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E38947CF27F4D8DF0028E6FA /* db */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
+		E38947D027F4DA6B0028E6FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E38947D627F4DB870028E6FA /* SourceSansPro-Black.ttf */,
+				E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */,
+				E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +168,10 @@
 			files = (
 				E33D7D8527F4B6F800D852B9 /* LaunchScreen.storyboard in Resources */,
 				E33D7D8227F4B6F800D852B9 /* Assets.xcassets in Resources */,
+				E38947E427F4DB880028E6FA /* SourceSansPro-Light.ttf in Resources */,
+				E38947E327F4DB880028E6FA /* SourceSansPro-Regular.ttf in Resources */,
 				E33D7D8027F4B6F700D852B9 /* Main.storyboard in Resources */,
+				E38947E227F4DB880028E6FA /* SourceSansPro-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
