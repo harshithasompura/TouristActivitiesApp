@@ -17,6 +17,7 @@
 		E38947E327F4DB880028E6FA /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */; };
 		E38947E427F4DB880028E6FA /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */; };
 		E38947EC27F4E0DF0028E6FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38947EB27F4E0DF0028E6FA /* User.swift */; };
+		E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 		E38947EB27F4E0DF0028E6FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				E33D7D7C27F4B6F700D852B9 /* LogInViewController.swift */,
+				E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				E38947EC27F4E0DF0028E6FA /* User.swift in Sources */,
 				E33D7D7D27F4B6F700D852B9 /* LogInViewController.swift in Sources */,
+				E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */,
 				E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */,
 				E33D7D7B27F4B6F700D852B9 /* SceneDelegate.swift in Sources */,
 			);

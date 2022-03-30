@@ -57,6 +57,14 @@ class LogInViewController: UIViewController {
                 lblError.text = "Login Successful!"
                 lblError.textColor = UIColor.green
                 //TODO: move onto next screen
+                // - try to get a reference to the next screen
+                guard let nextScreen = storyboard?.instantiateViewController(identifier: "TabBarController") else {
+                           print("Cannot find next screen")
+                           return
+                }
+                // - navigate to the next screen
+                self.present(nextScreen, animated:true, completion:nil)
+            
             } else {
                 //incorrect password
                 lblError.text = "The email/password combination does not match"
@@ -85,6 +93,10 @@ class LogInViewController: UIViewController {
         //add users to the list
         usersList.append(userOne)
         usersList.append(userTwo)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(#function, "Log in Screen")
     }
 }
 
