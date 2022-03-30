@@ -63,6 +63,7 @@ class LogInViewController: UIViewController {
                            return
                 }
                 // - navigate to the next screen
+                nextScreen.modalPresentationStyle = .fullScreen //changing tab controller to full screen here
                 self.present(nextScreen, animated:true, completion:nil)
             
             } else {
