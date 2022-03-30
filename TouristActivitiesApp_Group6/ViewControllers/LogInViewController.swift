@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  TouristActivitiesApp_Group6
-//
-//  Created by som on 30/03/22.
-//
-
 import UIKit
 
 class LogInViewController: UIViewController {
@@ -39,47 +32,52 @@ class LogInViewController: UIViewController {
         print(#function,"Login Button Pressed")
         
         //1. Get user email
-        guard let emailFromUI = txtFieldEmailAddress.text, emailFromUI.isEmpty == false else {
+        guard let emailFromUI = txtFieldEmailAddress.text?.lowercased(), emailFromUI.isEmpty == false else {
             lblError.text = "Please enter a valid email"
+            lblError.textColor = UIColor.orange
             //before return, clear the field
             txtFieldEmailAddress.text = ""
             return
         }
         
         //2. Get password
-        guard let passwordFromUI = txtFieldPassword.text, passwordFromUI.isEmpty == false else {
+        guard let passwordFromUI = txtFieldPassword.text?.lowercased(), passwordFromUI.isEmpty == false else {
             lblError.text = "Please enter a valid password"
+            lblError.textColor = UIColor.orange
             //before return, clear the field
             txtFieldEmailAddress.text = ""
             txtFieldPassword.text = ""
             return
         }
         
-        //3. Check if the user exists in our list
-        lblError.text = "" // if they reached this point, they entered valid data
+        //3. Check if the user exists in our list        
+        //3 a. Find if email exists in the list
+        let checkIfUserInList = usersList.first { $0.emailAddress == emailFromUI }
         
-        for user in usersList {
-            if user.emailAddress.contains(emailFromUI){
-                //email exists in our list do stuff
-                //check password
-                if user.password.contains(passwordFromUI){
-                    //correct password
-                    //move onto next screen
-                    
-                } else {
-                    //incorrect password
-                    lblError.text = "The email/password combination does not match"
-                }
+        if checkIfUserInList != nil {
+            //email exists do stuff
+            //3 b. Find if password matches
+            if passwordFromUI == checkIfUserInList?.password {
+                //password matches
+                lblError.text = "Login Successful!"
+                lblError.textColor = UIColor.green
+                //TODO: move onto next screen
             } else {
-                //email does not exist in our list
-                //TODO: this is not working as I expected
-                lblError.text = "This email does not exist"
+                //incorrect password
+                lblError.text = "The email/password combination does not match"
+                lblError.textColor = UIColor.red
             }
+            
+        } else {
+            //email does not exist in our list
+            lblError.text = "This email does not exist"
+            lblError.textColor = UIColor.red
+            return
         }
         
-        
-        //4. clear the input fields/error
-        //lblError.text = ""
+        //4. clear the input fields
+        txtFieldEmailAddress.text = ""
+        txtFieldPassword.text = ""
         
     }
     
