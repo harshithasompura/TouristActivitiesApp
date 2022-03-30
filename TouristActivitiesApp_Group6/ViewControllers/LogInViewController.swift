@@ -15,16 +15,11 @@ class LogInViewController: UIViewController {
         // Do any additional setup after loading the view.
         print(#function, "Login Screen Loaded!")
         
+        //creating users
+        createUsers()
+        
         //clear the error label
         lblError.text = ""
-        
-        //creating users
-        let userOne = User(email: "som", password: "123456")
-        let userTwo = User(email: "tao", password: "abcdef")
-        
-        //add users to the list
-        usersList.append(userOne)
-        usersList.append(userTwo)
     }
 
     //MARK: Actions
@@ -80,6 +75,16 @@ class LogInViewController: UIViewController {
         txtFieldPassword.text = ""
         
     }
-    
+
+    // MARK: Helpers/methods
+    private func createUsers(){
+        
+        let userOne = User(email: "som", password: "123456")
+        let userTwo = User(email: "tao", password: "abcdef")
+        
+        //add users to the list
+        usersList.append(userOne)
+        usersList.append(userTwo)
+    }
 }
 
