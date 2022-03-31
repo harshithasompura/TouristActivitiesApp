@@ -22,7 +22,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="TouristActivitiesApp_Group6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginScreen" id="BYZ-38-t0r" customClass="LogInViewController" customModule="TouristActivitiesApp_Group6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,6 +94,7 @@
                     </view>
                     <connections>
                         <outlet property="lblError" destination="XO0-7d-Oan" id="i5g-46-1PK"/>
+                        <outlet property="switchRememberUserLogin" destination="2UD-bX-8aQ" id="Dak-xL-rvc"/>
                         <outlet property="txtFieldEmailAddress" destination="rXp-wn-t1v" id="dwT-zo-cWd"/>
                         <outlet property="txtFieldPassword" destination="Zcm-8r-Xz9" id="qKy-r0-Ja3"/>
                     </connections>
@@ -102,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="70" y="69"/>
         </scene>
-        <!--Activities-->
+        <!--Activities View Controller-->
         <scene sceneID="Iag-bV-hZz">
             <objects>
                 <viewController storyboardIdentifier="activitiesScreen" id="Dl8-ue-8pp" customClass="ActivitiesViewController" customModule="TouristActivitiesApp_Group6" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +112,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Things to do in Vancouver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-bk-G0F">
-                                <rect key="frame" x="60" y="69" width="295" height="59"/>
+                                <rect key="frame" x="60" y="105" width="295" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -121,11 +122,11 @@
                         <viewLayoutGuide key="safeArea" id="PXC-Pl-diu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Activities" image="snow" catalog="system" id="SOx-Ac-KiU"/>
+                    <navigationItem key="navigationItem" id="Maz-7a-qYy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLg-pq-jiT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="69"/>
+            <point key="canvasLocation" x="2360.8695652173915" y="68.973214285714278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bCc-Ur-117">
@@ -139,12 +140,31 @@
                         <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Dl8-ue-8pp" kind="relationship" relationship="viewControllers" id="SQN-tZ-AMQ"/>
+                        <segue destination="Lic-Lp-TBG" kind="relationship" relationship="viewControllers" id="SQN-tZ-AMQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kYi-zm-iDZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="767" y="69"/>
+        </scene>
+        <!--Activities-->
+        <scene sceneID="GjF-vF-7nB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lic-Lp-TBG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Activities" image="snow" catalog="system" id="SOx-Ac-KiU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="73G-ni-i3L">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dl8-ue-8pp" kind="relationship" relationship="rootViewController" id="1NL-q5-Z8r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PoJ-wZ-O0k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="69"/>
         </scene>
     </scenes>
     <resources>

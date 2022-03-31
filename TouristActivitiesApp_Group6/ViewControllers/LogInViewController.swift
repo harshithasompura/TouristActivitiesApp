@@ -2,6 +2,9 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    //MARK: User Defaults
+    var defaults:UserDefaults = UserDefaults.standard
+
     //MARK: Variables
     var usersList:[User] = [] //stores users in a list
     
@@ -9,6 +12,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var txtFieldEmailAddress: UITextField!
     @IBOutlet weak var txtFieldPassword: UITextField!
     @IBOutlet weak var lblError: UILabel!
+    @IBOutlet weak var switchRememberUserLogin: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +60,12 @@ class LogInViewController: UIViewController {
                 //password matches
                 lblError.text = "Login Successful!"
                 lblError.textColor = UIColor.green
-                //TODO: move onto next screen
+                
+                //get remember me switch value
+                let isRememberSaved = switchRememberUserLogin.isOn
+                self.defaults.set(isRememberSaved, forKey: "KEY_REMEMBER_USER")
+                
+                //move onto next screen
                 // - try to get a reference to the next screen
                 guard let nextScreen = storyboard?.instantiateViewController(identifier: "TabBarController") else {
                            print("Cannot find next screen")
@@ -97,7 +106,27 @@ class LogInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(#function, "Log in Screen")
+        print(#function, "LOGIN SCREEN")
+ 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(#function, "LOGIN SCREEN")
+        //check user login
+        let isUserSavedFromUserDefaults:Bool = self.defaults.bool(forKey: "KEY_REMEMBER_USER")
+        print("Is user remebered? \(isUserSavedFromUserDefaults)")
+        if isUserSavedFromUserDefaults {
+            //move onto next screen
+            // - try to get a reference to the next screen
+            guard let nextScreen = storyboard?.instantiateViewController(identifier: "TabBarController") else {
+                       print("Cannot find next screen")
+                       return
+            }
+            // - navigate to the next screen
+            nextScreen.modalPresentationStyle = .fullScreen //changing tab controller to full screen here
+            
+            present(nextScreen, animated: true, completion: nil)
+        }
     }
 }
 
