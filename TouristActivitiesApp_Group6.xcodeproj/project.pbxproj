@@ -20,6 +20,8 @@
 		E38947E327F4DB880028E6FA /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */; };
 		E38947E427F4DB880028E6FA /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */; };
 		E38947EC27F4E0DF0028E6FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38947EB27F4E0DF0028E6FA /* User.swift */; };
+		E3CC637D27F7F4FC00778ED9 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC637C27F7F4FC00778ED9 /* Activity.swift */; };
+		E3CC637F27F7F68500778ED9 /* ActivityDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC637E27F7F68500778ED9 /* ActivityDb.swift */; };
 		E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		E38947D727F4DB870028E6FA /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		E38947D827F4DB870028E6FA /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 		E38947EB27F4E0DF0028E6FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E3CC637C27F7F4FC00778ED9 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		E3CC637E27F7F68500778ED9 /* ActivityDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDb.swift; sourceTree = "<group>"; };
 		E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				E38947EB27F4E0DF0028E6FA /* User.swift */,
+				E3CC637C27F7F4FC00778ED9 /* Activity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 		E38947CF27F4D8DF0028E6FA /* db */ = {
 			isa = PBXGroup;
 			children = (
+				E3CC637E27F7F68500778ED9 /* ActivityDb.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 				E33D7D7D27F4B6F700D852B9 /* LogInViewController.swift in Sources */,
 				E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */,
 				E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */,
+				E3CC637F27F7F68500778ED9 /* ActivityDb.swift in Sources */,
 				E34A43AF27F797A9000EA7DB /* ActivityDetailViewController.swift in Sources */,
 				E33D7D7B27F4B6F700D852B9 /* SceneDelegate.swift in Sources */,
+				E3CC637D27F7F4FC00778ED9 /* Activity.swift in Sources */,
 				E34A43AD27F7968E000EA7DB /* FavouritesViewController.swift in Sources */,
 				E34A43AB27F79583000EA7DB /* PurchaseTicketsViewController.swift in Sources */,
 			);
