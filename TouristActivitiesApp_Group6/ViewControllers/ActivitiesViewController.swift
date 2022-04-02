@@ -8,6 +8,8 @@ class ActivitiesViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var activityCollectionView: UICollectionView!
     
+    //MARK: Data Source
+    var activitiesDb = ActivityDb.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class ActivitiesViewController: UIViewController {
         //collectionView config
         activityCollectionView.delegate = self
         activityCollectionView.dataSource = self
+        activityCollectionView.register(UINib.init(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "activityCell")
         
         //Add signout to nav bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
@@ -51,16 +54,23 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5 //TODO: update this to activity list count
+        return activitiesDb.totalActivities()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = indexPath.row
+        
+        let clickedActivity = activitiesDb.getAll()[item]
+        
         let cell = collectionView.dequeueReusableCell(
               withReuseIdentifier: "activityCell",
-              for: indexPath)
-            cell.backgroundColor = .systemBlue
-            // Configure the cell
-            return cell
+              for: indexPath) as! ActivityCollectionViewCell
+       
+        // Configure the cell
+        cell.configure(with: clickedActivity)
+        cell.layer.borderColor = UIColor.blue.cgColor
+        cell.layer.borderWidth = 1
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

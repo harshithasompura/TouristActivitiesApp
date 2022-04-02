@@ -22,6 +22,8 @@
 		E38947EC27F4E0DF0028E6FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38947EB27F4E0DF0028E6FA /* User.swift */; };
 		E3CC637D27F7F4FC00778ED9 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC637C27F7F4FC00778ED9 /* Activity.swift */; };
 		E3CC637F27F7F68500778ED9 /* ActivityDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC637E27F7F68500778ED9 /* ActivityDb.swift */; };
+		E3CC638427F7FC4700778ED9 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC638227F7FC4700778ED9 /* ActivityCollectionViewCell.swift */; };
+		E3CC638527F7FC4700778ED9 /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CC638327F7FC4700778ED9 /* ActivityCollectionViewCell.xib */; };
 		E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		E38947EB27F4E0DF0028E6FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3CC637C27F7F4FC00778ED9 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		E3CC637E27F7F68500778ED9 /* ActivityDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDb.swift; sourceTree = "<group>"; };
+		E3CC638227F7FC4700778ED9 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		E3CC638327F7FC4700778ED9 /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
 		E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +87,7 @@
 				E33D7D7827F4B6F700D852B9 /* AppDelegate.swift */,
 				E33D7D7A27F4B6F700D852B9 /* SceneDelegate.swift */,
 				E33D7D7E27F4B6F700D852B9 /* Main.storyboard */,
+				E3CC638327F7FC4700778ED9 /* ActivityCollectionViewCell.xib */,
 				E33D7D8327F4B6F800D852B9 /* LaunchScreen.storyboard */,
 				E33D7D8127F4B6F800D852B9 /* Assets.xcassets */,
 				E33D7D8627F4B6F800D852B9 /* Info.plist */,
@@ -98,6 +103,7 @@
 				E34A43AA27F79583000EA7DB /* PurchaseTicketsViewController.swift */,
 				E34A43AC27F7968E000EA7DB /* FavouritesViewController.swift */,
 				E34A43AE27F797A9000EA7DB /* ActivityDetailViewController.swift */,
+				E3CC638227F7FC4700778ED9 /* ActivityCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 				E38947E327F4DB880028E6FA /* SourceSansPro-Regular.ttf in Resources */,
 				E33D7D8027F4B6F700D852B9 /* Main.storyboard in Resources */,
 				E38947E227F4DB880028E6FA /* SourceSansPro-Black.ttf in Resources */,
+				E3CC638527F7FC4700778ED9 /* ActivityCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +213,7 @@
 				E38947EC27F4E0DF0028E6FA /* User.swift in Sources */,
 				E33D7D7D27F4B6F700D852B9 /* LogInViewController.swift in Sources */,
 				E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */,
+				E3CC638427F7FC4700778ED9 /* ActivityCollectionViewCell.swift in Sources */,
 				E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */,
 				E3CC637F27F7F68500778ED9 /* ActivityDb.swift in Sources */,
 				E34A43AF27F797A9000EA7DB /* ActivityDetailViewController.swift in Sources */,
