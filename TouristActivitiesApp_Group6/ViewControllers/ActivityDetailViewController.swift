@@ -1,6 +1,7 @@
 import UIKit
+import WebKit
 
-class ActivityDetailViewController: UIViewController {
+class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
     
     //MARK: User Defaults
     var defaults:UserDefaults = UserDefaults.standard
@@ -11,18 +12,22 @@ class ActivityDetailViewController: UIViewController {
     @IBOutlet weak var lblActivityDescription: UILabel!
     @IBOutlet weak var lblHostedBy: UILabel!
     @IBOutlet weak var lblActivityPrice: UILabel!
-    @IBOutlet weak var lblActivityWebsite: UILabel!
+    @IBOutlet weak var webView: WKWebView!
     
     //MARK: Data Source
     var activitiesDb = ActivityDb.shared
     
+    //MARK: Variables
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //cofig web view
+        webView.navigationDelegate = self
+        self.view.addSubview(webView)
         // Do any additional setup after loading the view.
         print(#function, "Activity Detail Screen Loaded!")
         
-        self.title = "Activity Detail" //TODO: should replace title as the item clicked in Collection view
+        self.title = "Activity Detail"
         
         //config activity Detail
         configureActivityDetail()
@@ -40,6 +45,16 @@ class ActivityDetailViewController: UIViewController {
         print(#function, "Purchase Ticket Button Pressed!")
     }
     
+    @IBAction func websiteButtonPressed(_ sender: Any) {
+        print(#function, "Website Button Pressed!")
+        let currentActivity = activitiesDb.getActivityDetail()
+        guard let url = URL(string: currentActivity.website) else {
+            print("Could not find this url")
+            return
+        }
+        webView.load(URLRequest(url: url))
+        webView.frame = view.bounds;
+    }
     //MARK: Helpers/methods
     func configureActivityDetail(){
         let currentActivity = activitiesDb.getActivityDetail()
@@ -48,7 +63,7 @@ class ActivityDetailViewController: UIViewController {
         lblActivityDescription.text = currentActivity.description
         lblHostedBy.text = "Hosted by: " + currentActivity.hostedBy
         lblActivityPrice.text = "$" + String(currentActivity.pricingPerPerson) + "/ person"
-        lblActivityWebsite.text = currentActivity.website //TODO: config webview
+//        lblActivityWebsite.text = currentActivity.website //TODO: config webview
     }
     
     @objc private func signOutPressed() {

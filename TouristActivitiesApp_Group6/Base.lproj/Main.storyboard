@@ -194,15 +194,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-RS-3fP">
-                                <rect key="frame" x="43" y="662" width="329" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd7-SP-7fx">
-                                <rect key="frame" x="70" y="728" width="274" height="52"/>
+                                <rect key="frame" x="70" y="768" width="274" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,6 +207,24 @@
                                     <action selector="purchaseTicketButtonPressed:" destination="R8C-eN-5wG" eventType="touchUpInside" id="HJf-vb-2Pd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Mz-ai-160">
+                                <rect key="frame" x="32" y="662" width="136" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Go to website"/>
+                                <connections>
+                                    <action selector="websiteButtonPressed:" destination="R8C-eN-5wG" eventType="touchUpInside" id="JQE-Sk-NU7"/>
+                                </connections>
+                            </button>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-sy-Lu9">
+                                <rect key="frame" x="154" y="616" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Ai-Zg-4c4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -224,8 +235,8 @@
                         <outlet property="ivActivityImage" destination="Ghu-gc-bDz" id="VBw-Qv-WV5"/>
                         <outlet property="lblActivityDescription" destination="ulU-Zw-tjM" id="qpH-T1-GYu"/>
                         <outlet property="lblActivityPrice" destination="J5g-1a-gxj" id="fMr-7X-Ze2"/>
-                        <outlet property="lblActivityWebsite" destination="rwG-RS-3fP" id="EGg-6P-SD6"/>
                         <outlet property="lblHostedBy" destination="8x9-RP-sRs" id="812-MP-9dS"/>
+                        <outlet property="webView" destination="Mff-sy-Lu9" id="FuB-5q-A2X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSR-Ng-s72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -326,7 +337,7 @@
         <!--Favourites-->
         <scene sceneID="wOj-3h-5Ca">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMG-jO-Doa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navControllerFavourites" automaticallyAdjustsScrollViewInsets="NO" id="YMG-jO-Doa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favourites" image="star" catalog="system" id="el9-4L-KTi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3dJ-lB-GRg">
@@ -345,7 +356,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pyJ-Aq-kdl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rF1-cC-7Gi" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navControllerActivityDetail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rF1-cC-7Gi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ywu-EQ-S8z">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
