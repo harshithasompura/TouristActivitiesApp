@@ -5,7 +5,9 @@ class ActivityDb {
 
   static let shared = ActivityDb()
   private init() {}
-
+  
+  //MARK: Variables
+    
   //List of Activities
   private var activityList: [Activity] = [
     Activity(
@@ -64,7 +66,12 @@ class ActivityDb {
   //single activity detail handler
   private var currentActivity: Activity = Activity(
     name: "", description: "", hostedBy: "", photo: "", pricingPerPerson: 0.0, website: "")
-
+  
+  //favourites list
+  private var favouriteActivityList: [Activity] = []
+  
+    
+  //MARK: Helpers/methods
   func getAll() -> [Activity] {
     return activityList
   }
@@ -81,4 +88,23 @@ class ActivityDb {
   func getActivityDetail() -> Activity {
     return currentActivity
   }
+  
+  func setFavouriteActivity(of: Activity){
+    //set a favourite activity
+    favouriteActivityList.append(of)
+    print(#function, of.name)
+  }
+    
+  func removeFavouriteActivity(of: Activity){
+      if let index = favouriteActivityList.firstIndex(where: {$0.name == of.name}){
+          print(#function, of.name)
+          print("Removing.. \(favouriteActivityList[index].name) from favourites list")
+          favouriteActivityList.remove(at: index)
+      }
+  }
+  
+  func getFavouritesList() -> [Activity]{
+        return favouriteActivityList
+  }
+    
 }

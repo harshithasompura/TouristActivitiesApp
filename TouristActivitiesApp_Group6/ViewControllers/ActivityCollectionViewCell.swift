@@ -10,7 +10,10 @@ class ActivityCollectionViewCell: UICollectionViewCell {
 
   //MARK: Variables
   var favOn: Bool = true
-
+  
+  //MARK: Data Source
+  var activitiesDb = ActivityDb.shared
+    
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -30,12 +33,16 @@ class ActivityCollectionViewCell: UICollectionViewCell {
       //star a button fill
       favouriteButton.setImage(UIImage.init(systemName: "star.fill"), for: .normal)
       //add to our fav list
+      let clickedActivity = activitiesDb.getAll()[favouriteButton.tag]
+      activitiesDb.setFavouriteActivity(of: clickedActivity)
       favOn = !favOn
     } else {
       //unstar a button fill
       favouriteButton.setImage(UIImage.init(systemName: "star"), for: .normal)
       favOn = !favOn
       //remove from the fav list
+      let clickedActivity = activitiesDb.getAll()[favouriteButton.tag]
+      activitiesDb.removeFavouriteActivity(of: clickedActivity)
     }
     print(favouriteButton.tag)  //index the cell was clicked at
   }
