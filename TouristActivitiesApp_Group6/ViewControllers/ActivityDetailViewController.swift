@@ -1,10 +1,3 @@
-//
-//  ActivityDetailViewController.swift
-//  TouristActivitiesApp_Group6
-//
-//  Created by som on 02/04/22.
-//
-
 import UIKit
 
 class ActivityDetailViewController: UIViewController {

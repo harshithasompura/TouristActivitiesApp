@@ -68,8 +68,9 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
        
         // Configure the cell
         cell.configure(with: clickedActivity)
-        cell.layer.borderColor = UIColor.blue.cgColor
+        cell.layer.borderColor = UIColor.systemBlue.cgColor
         cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8
         return cell
     }
     

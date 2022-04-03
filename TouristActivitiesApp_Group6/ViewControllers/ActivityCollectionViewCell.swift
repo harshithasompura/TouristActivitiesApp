@@ -1,10 +1,3 @@
-//
-//  ActivityCollectionViewCell.swift
-//  TouristActivitiesApp_Group6
-//
-//  Created by som on 02/04/22.
-//
-
 import UIKit
 
 class ActivityCollectionViewCell: UICollectionViewCell {
@@ -24,5 +17,10 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         lblActivityName.text = model.name
         lblActivityPrice.text = "$" + String(model.pricingPerPerson) + "/ person"
     }
-
+    
+    //MARK: Actions
+    
+    @IBAction func favouriteButtonPressed(_ sender: Any) {
+        print(#function, "Favourites button pressed!")
+    }
 }
