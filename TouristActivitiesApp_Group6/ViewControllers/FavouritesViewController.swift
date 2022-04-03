@@ -56,7 +56,7 @@ class FavouritesViewController: UIViewController {
 extension FavouritesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         
      func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1 //TODO: Update this count as well
+        return 1
       }
 
     
