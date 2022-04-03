@@ -6,6 +6,10 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var activityImageView: UIImageView!
     @IBOutlet weak var lblActivityName: UILabel!
     @IBOutlet weak var lblActivityPrice: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
+    
+    //MARK: Variables
+    var favOn:Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,8 +23,20 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Actions
-    
     @IBAction func favouriteButtonPressed(_ sender: Any) {
+        
         print(#function, "Favourites button pressed!")
+           if favOn {
+               //star a button fill
+               favouriteButton.setImage(UIImage.init(systemName: "star.fill"), for: .normal)
+               //add to our fav list
+               favOn = !favOn
+           } else {
+               //unstar a button fill
+               favouriteButton.setImage(UIImage.init(systemName: "star"), for: .normal)
+               favOn = !favOn
+               //remove from the fav list
+           }
+        print(favouriteButton.tag) //index the cell was clicked at
     }
 }

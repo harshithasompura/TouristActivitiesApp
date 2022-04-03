@@ -71,6 +71,9 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
         cell.layer.borderColor = UIColor.systemBlue.cgColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
+        
+        //config fav button
+        cell.favouriteButton.tag = indexPath.row //to know which cell was clicked
         return cell
     }
     

@@ -57,6 +57,7 @@
             <size key="customSize" width="185" height="195"/>
             <connections>
                 <outlet property="activityImageView" destination="uEQ-S1-gKN" id="2BS-52-dln"/>
+                <outlet property="favouriteButton" destination="OJu-Te-WZc" id="emH-Tz-pXI"/>
                 <outlet property="lblActivityName" destination="6uM-ft-usd" id="cJr-Ii-EUu"/>
                 <outlet property="lblActivityPrice" destination="g9C-N2-c4a" id="Gwm-bG-kYr"/>
             </connections>
