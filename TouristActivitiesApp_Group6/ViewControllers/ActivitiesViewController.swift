@@ -49,7 +49,7 @@ class ActivitiesViewController: UIViewController {
 extension ActivitiesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         
      func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1 //TODO: Update this count as well
+        return 1
       }
 
     
