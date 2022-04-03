@@ -65,13 +65,16 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(
               withReuseIdentifier: "activityCell",
               for: indexPath) as! ActivityCollectionViewCell
-       
         // Configure the cell
         cell.configure(with: clickedActivity)
         cell.layer.borderColor = UIColor.systemBlue.cgColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
-        
+        //some shadow color to the cell
+        cell.layer.shadowColor = UIColor.systemBlue.cgColor
+        cell.layer.shadowOffset = CGSize(width: 2, height: -4)
+        cell.layer.shadowRadius = 8
+        cell.layer.shadowOpacity = 0.2
         //config fav button
         cell.favouriteButton.tag = indexPath.row //to know which cell was clicked
         return cell
