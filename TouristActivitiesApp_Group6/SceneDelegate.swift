@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  TouristActivitiesApp_Group6
-//
-//  Created by som on 30/03/22.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
