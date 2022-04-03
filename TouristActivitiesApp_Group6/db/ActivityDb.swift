@@ -40,11 +40,23 @@ class ActivityDb{
         
     ]
     
+    //single activity detail handler
+    private var currentActivity:Activity = Activity(name: "", description: "", hostedBy: "", photo: "", pricingPerPerson: 0.0, website: "")
+    
     func getAll() -> [Activity] {
         return activityList
     }
     
     func totalActivities() -> Int {
         return activityList.count
+    }
+    
+    func setActivityDetail(of: Activity){
+        //details about a single activity
+        currentActivity = of
+    }
+    
+    func getActivityDetail() -> Activity {
+        return currentActivity
     }
 }

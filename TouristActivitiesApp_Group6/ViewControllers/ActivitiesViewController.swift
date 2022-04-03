@@ -61,12 +61,10 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
         let item = indexPath.row
         
         let clickedActivity = activitiesDb.getAll()[item]
-        
-        
-        
         let cell = collectionView.dequeueReusableCell(
               withReuseIdentifier: "activityCell",
               for: indexPath) as! ActivityCollectionViewCell
+        
         // Configure the cell
         cell.configure(with: clickedActivity)
         if(item == 1 || item == 4){
@@ -105,7 +103,19 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
             let selectedItem = indexPath.row
             print("You selected Item #\(selectedItem)")
             
-            //TODO: Move to Activity Detail Screen here
+            //configure activity clicked
+            let clickedActivity = activitiesDb.getAll()[selectedItem]
+            activitiesDb.setActivityDetail(of: clickedActivity)
+            
+            //Move to Activity Detail Screen here
+            guard let nextScreen = storyboard?.instantiateViewController(identifier: "activityDetail") else {
+                       print("Cannot find next screen")
+                       return
+            }
+            nextScreen.modalPresentationStyle = .fullScreen //changing next screen to full screen here
+            
+            // - navigate to the next screen
+            navigationController?.pushViewController(nextScreen, animated: true)
     }
     
 }
