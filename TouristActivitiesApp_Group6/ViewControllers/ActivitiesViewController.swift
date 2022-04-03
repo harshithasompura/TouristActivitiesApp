@@ -62,19 +62,33 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
         
         let clickedActivity = activitiesDb.getAll()[item]
         
+        
+        
         let cell = collectionView.dequeueReusableCell(
               withReuseIdentifier: "activityCell",
               for: indexPath) as! ActivityCollectionViewCell
         // Configure the cell
         cell.configure(with: clickedActivity)
-        cell.layer.borderColor = UIColor.systemBlue.cgColor
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 8
-        //some shadow color to the cell
-        cell.layer.shadowColor = UIColor.systemBlue.cgColor
-        cell.layer.shadowOffset = CGSize(width: 2, height: -4)
-        cell.layer.shadowRadius = 8
-        cell.layer.shadowOpacity = 0.2
+        if(item == 1 || item == 4){
+            //change color for popular activity based on index 1 and 4
+            cell.layer.borderColor = UIColor.systemRed.cgColor
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 8
+            //some shadow color to the cell
+            cell.layer.shadowColor = UIColor.systemRed.cgColor
+            cell.layer.shadowOffset = CGSize(width: 2, height: -4)
+            cell.layer.shadowRadius = 8
+            cell.layer.shadowOpacity = 0.2
+        } else {
+            cell.layer.borderColor = UIColor.systemBlue.cgColor
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 8
+            //some shadow color to the cell
+            cell.layer.shadowColor = UIColor.systemBlue.cgColor
+            cell.layer.shadowOffset = CGSize(width: 2, height: -4)
+            cell.layer.shadowRadius = 8
+            cell.layer.shadowOpacity = 0.2
+        }
         //config fav button
         cell.favouriteButton.tag = indexPath.row //to know which cell was clicked
         return cell
