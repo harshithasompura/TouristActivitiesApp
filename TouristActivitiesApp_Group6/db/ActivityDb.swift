@@ -5,9 +5,9 @@ class ActivityDb {
 
   static let shared = ActivityDb()
   private init() {}
-  
+
   //MARK: Variables
-    
+
   //List of Activities
   private var activityList: [Activity] = [
     Activity(
@@ -66,11 +66,16 @@ class ActivityDb {
   //single activity detail handler
   private var currentActivity: Activity = Activity(
     name: "", description: "", hostedBy: "", photo: "", pricingPerPerson: 0.0, website: "")
-  
+
   //favourites list
   private var favouriteActivityList: [Activity] = []
-  
-    
+
+  //db of purchased tickets
+  private var ticketPurchaseList: [TicketPurchase] = []
+
+  //db for pickerView in Detail screen
+  private let ticketNumberRange = [1, 2, 3, 4, 5]
+
   //MARK: Helpers/methods
   func getAll() -> [Activity] {
     return activityList
@@ -88,23 +93,41 @@ class ActivityDb {
   func getActivityDetail() -> Activity {
     return currentActivity
   }
-  
-  func setFavouriteActivity(of: Activity){
+
+  func setFavouriteActivity(of: Activity) {
     //set a favourite activity
     favouriteActivityList.append(of)
     print(#function, of.name)
   }
-    
-  func removeFavouriteActivity(of: Activity){
-      if let index = favouriteActivityList.firstIndex(where: {$0.name == of.name}){
-          print(#function, of.name)
-          print("Removing.. \(favouriteActivityList[index].name) from favourites list")
-          favouriteActivityList.remove(at: index)
-      }
+
+  func removeFavouriteActivity(of: Activity) {
+    if let index = favouriteActivityList.firstIndex(where: { $0.name == of.name }) {
+      print(#function, of.name)
+      print("Removing.. \(favouriteActivityList[index].name) from favourites list")
+      favouriteActivityList.remove(at: index)
+    }
   }
-  
-  func getFavouritesList() -> [Activity]{
-        return favouriteActivityList
+
+  func getFavouritesList() -> [Activity] {
+    return favouriteActivityList
   }
-    
+
+  //MARK: helpers of ticket purchases
+  func getAllTicketPurchase() -> [TicketPurchase] {
+    return self.ticketPurchaseList
+  }
+
+  func addNewTicketPurchase(newPurchase: TicketPurchase) {
+    self.ticketPurchaseList.append(newPurchase)
+  }
+
+  func deleteOneTicketPurchase(indexOfPurchaseToGo: Int) {
+    self.ticketPurchaseList.remove(at: indexOfPurchaseToGo)
+  }
+
+  //helper for ticket number range,only need getAll method
+  func getTicketNumberRange() -> [Int] {
+    return ticketNumberRange
+  }
 }
+

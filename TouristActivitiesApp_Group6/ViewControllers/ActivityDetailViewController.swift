@@ -13,6 +13,7 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
   @IBOutlet weak var lblHostedBy: UILabel!
   @IBOutlet weak var lblActivityPrice: UILabel!
   @IBOutlet weak var webView: WKWebView!
+  @IBOutlet weak var purchaseTicketButton: UIButton!
 
   //MARK: Data Source
   var activitiesDb = ActivityDb.shared
@@ -22,7 +23,7 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    //cofig web view
+    //config web view
     webView.navigationDelegate = self
     self.view.addSubview(webView)
 
@@ -58,6 +59,7 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
     webView.load(URLRequest(url: url))
     webView.frame = view.bounds
   }
+  
   //MARK: Helpers/methods
   func configureActivityDetail() {
     let currentActivity = activitiesDb.getActivityDetail()
@@ -85,3 +87,4 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
   }
 
 }
+

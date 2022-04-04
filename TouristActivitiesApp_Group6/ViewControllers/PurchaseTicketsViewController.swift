@@ -5,6 +5,15 @@ class PurchaseTicketsViewController: UIViewController {
   //MARK: User Defaults
   var defaults: UserDefaults = UserDefaults.standard
 
+  //MARK: Outlets
+  @IBOutlet weak var purchaseTableView: UITableView!
+  @IBOutlet weak var costLabel: UILabel!
+
+  //MARK: Data Source
+  var activitiesDb = ActivityDb.shared
+
+  //MARK: Variables
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -13,11 +22,30 @@ class PurchaseTicketsViewController: UIViewController {
 
     self.title = "Purchase Tickets"
 
+    //tableview config
+    purchaseTableView.dataSource = self
+    purchaseTableView.delegate = self
+
     //Add signout to nav bar
     navigationItem.rightBarButtonItem = UIBarButtonItem(
       title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    purchaseTableView.reloadData()
+    updateCost()
+  }
+
+  //MARK: Helpers/methods
+  //update LBLcost
+  func updateCost() {
+    var cost: Double = 0
+    for i in ActivityDb.shared.getAllTicketPurchase() {
+      cost = cost + i.getOnePurchaseCost()
+    }
+    costLabel.text = "Total Cost: $\(String(format: "%.2f", cost))"
+
+  }
   @objc private func signOutPressed() {
     //set remember me to false
     self.defaults.set(false, forKey: "KEY_REMEMBER_USER")
@@ -34,5 +62,35 @@ class PurchaseTicketsViewController: UIViewController {
     self.present(nextScreen, animated: true, completion: nil)
   }
 
+}
+
+extension PurchaseTicketsViewController: UITableViewDelegate, UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return ActivityDb.shared.getAllTicketPurchase().count
+  }
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
+
+    let i = ActivityDb.shared.getAllTicketPurchase()[indexPath.row]
+    cell.textLabel?.text = i.description
+    return cell
+  }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print("Row clicked: \(indexPath.row)")
+  }
+  func tableView(
+    _ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath
+  ) {
+    ActivityDb.shared.deleteOneTicketPurchase(indexOfPurchaseToGo: indexPath.row)
+    //before!
+    tableView.deleteRows(at: [indexPath], with: .fade)
+
+    updateCost()
+    tableView.reloadData()
+  }
 }
 

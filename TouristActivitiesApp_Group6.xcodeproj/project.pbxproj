@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E33070DE27FB15C100DDE7D6 /* TicketPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33070DD27FB15C100DDE7D6 /* TicketPurchase.swift */; };
 		E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D7D7827F4B6F700D852B9 /* AppDelegate.swift */; };
 		E33D7D7B27F4B6F700D852B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D7D7A27F4B6F700D852B9 /* SceneDelegate.swift */; };
 		E33D7D7D27F4B6F700D852B9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D7D7C27F4B6F700D852B9 /* LogInViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E33070DD27FB15C100DDE7D6 /* TicketPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPurchase.swift; sourceTree = "<group>"; };
 		E33D7D7527F4B6F700D852B9 /* TouristActivitiesApp_Group6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristActivitiesApp_Group6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E33D7D7827F4B6F700D852B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E33D7D7A27F4B6F700D852B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				E38947EB27F4E0DF0028E6FA /* User.swift */,
 				E3CC637C27F7F4FC00778ED9 /* Activity.swift */,
+				E33070DD27FB15C100DDE7D6 /* TicketPurchase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			files = (
 				E38947EC27F4E0DF0028E6FA /* User.swift in Sources */,
 				E33D7D7D27F4B6F700D852B9 /* LogInViewController.swift in Sources */,
+				E33070DE27FB15C100DDE7D6 /* TicketPurchase.swift in Sources */,
 				E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */,
 				E3CC638427F7FC4700778ED9 /* ActivityCollectionViewCell.swift in Sources */,
 				E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */,
