@@ -4,7 +4,7 @@ class TicketPurchase {
   let nameOfActivity: String
   let quantity: Int
   private let price: Double
-  private let dateOfVisit: String
+  let dateOfVisit: String
   var totalCostOfPurchase: Double {
       get {
           return Double(quantity) * price

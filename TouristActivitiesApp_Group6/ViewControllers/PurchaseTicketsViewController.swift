@@ -25,7 +25,9 @@ class PurchaseTicketsViewController: UIViewController {
     //tableview config
     purchaseTableView.dataSource = self
     purchaseTableView.delegate = self
-
+    purchaseTableView.register(UINib(nibName: "PurchaseTableViewCell", bundle:nil), forCellReuseIdentifier: "purchaseCell")
+    purchaseTableView.rowHeight = 140
+      
     //Add signout to nav bar
     navigationItem.rightBarButtonItem = UIBarButtonItem(
       title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
@@ -72,11 +74,13 @@ extension PurchaseTicketsViewController: UITableViewDelegate, UITableViewDataSou
     return ActivityDb.shared.getAllTicketPurchase().count
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
+    let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath) as! PurchaseTableViewCell
 
     let i = ActivityDb.shared.getAllTicketPurchase()[indexPath.row]
-    cell.textLabel?.text = "No. of tickets: #\(i.quantity) for \(i.nameOfActivity)"
-    cell.detailTextLabel?.text = "Total Cost: $\(i.totalCostOfPurchase)"
+    cell.lblActivityName.text = "Activity: \(i.nameOfActivity)"
+    cell.lblNumberOfTickets.text = "No. of tickets: \(i.quantity)"
+    cell.lblPriceOfPurchase.text = "Total Cost: $\(i.totalCostOfPurchase)"
+    cell.lblDateOfVisit.text = "Date of Visit: \(i.dateOfVisit)"
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

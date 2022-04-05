@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E325C9C327FC1639003E3975 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E325C9C127FC1639003E3975 /* PurchaseTableViewCell.swift */; };
+		E325C9C427FC1639003E3975 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E325C9C227FC1639003E3975 /* PurchaseTableViewCell.xib */; };
 		E33070DE27FB15C100DDE7D6 /* TicketPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33070DD27FB15C100DDE7D6 /* TicketPurchase.swift */; };
 		E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D7D7827F4B6F700D852B9 /* AppDelegate.swift */; };
 		E33D7D7B27F4B6F700D852B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D7D7A27F4B6F700D852B9 /* SceneDelegate.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E325C9C127FC1639003E3975 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
+		E325C9C227FC1639003E3975 /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseTableViewCell.xib; sourceTree = "<group>"; };
 		E33070DD27FB15C100DDE7D6 /* TicketPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPurchase.swift; sourceTree = "<group>"; };
 		E33D7D7527F4B6F700D852B9 /* TouristActivitiesApp_Group6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristActivitiesApp_Group6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E33D7D7827F4B6F700D852B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 				E33D7D7A27F4B6F700D852B9 /* SceneDelegate.swift */,
 				E33D7D7E27F4B6F700D852B9 /* Main.storyboard */,
 				E3CC638327F7FC4700778ED9 /* ActivityCollectionViewCell.xib */,
+				E325C9C227FC1639003E3975 /* PurchaseTableViewCell.xib */,
 				E33D7D8327F4B6F800D852B9 /* LaunchScreen.storyboard */,
 				E33D7D8127F4B6F800D852B9 /* Assets.xcassets */,
 				E33D7D8627F4B6F800D852B9 /* Info.plist */,
@@ -100,6 +105,7 @@
 		E38947CD27F4D8CA0028E6FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E325C9C127FC1639003E3975 /* PurchaseTableViewCell.swift */,
 				E33D7D7C27F4B6F700D852B9 /* LogInViewController.swift */,
 				E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */,
 				E34A43AA27F79583000EA7DB /* PurchaseTicketsViewController.swift */,
@@ -196,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E325C9C427FC1639003E3975 /* PurchaseTableViewCell.xib in Resources */,
 				E33D7D8527F4B6F800D852B9 /* LaunchScreen.storyboard in Resources */,
 				E33D7D8227F4B6F800D852B9 /* Assets.xcassets in Resources */,
 				E38947E427F4DB880028E6FA /* SourceSansPro-Light.ttf in Resources */,
@@ -216,6 +223,7 @@
 				E38947EC27F4E0DF0028E6FA /* User.swift in Sources */,
 				E33D7D7D27F4B6F700D852B9 /* LogInViewController.swift in Sources */,
 				E33070DE27FB15C100DDE7D6 /* TicketPurchase.swift in Sources */,
+				E325C9C327FC1639003E3975 /* PurchaseTableViewCell.swift in Sources */,
 				E3E397EA27F50BB3001B875B /* ActivitiesViewController.swift in Sources */,
 				E3CC638427F7FC4700778ED9 /* ActivityCollectionViewCell.swift in Sources */,
 				E33D7D7927F4B6F700D852B9 /* AppDelegate.swift in Sources */,
