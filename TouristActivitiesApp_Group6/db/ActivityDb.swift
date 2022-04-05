@@ -2,7 +2,10 @@ import Foundation
 
 //Activity Singleton
 class ActivityDb {
-
+  
+  //MARK: User Defaults
+  var defaults: UserDefaults = UserDefaults.standard
+    
   static let shared = ActivityDb()
   private init() {}
 
@@ -75,7 +78,9 @@ class ActivityDb {
 
   //db for pickerView in Detail screen
   private let ticketNumberRange = [1, 2, 3, 4, 5]
-
+ 
+  private var currentUser = User(email: "", password: "")
+    
   //MARK: Helpers/methods
   func getAll() -> [Activity] {
     return activityList
@@ -116,13 +121,97 @@ class ActivityDb {
   func getAllTicketPurchase() -> [TicketPurchase] {
     return self.ticketPurchaseList
   }
+  
+  func getPurchaseListFromUserDefaults() -> [TicketPurchase]{
+      //get purchase list from user default
+      // Read/Get Data
+      //find current user
+      // Read/Get Data
+      if let data = UserDefaults.standard.data(forKey: "KEY_CURRENT_USER") {
+              do {
+                  // Create JSON Decoder
+                  let decoder = JSONDecoder()
 
+                  // Decode Note
+                  let currentUserFromUserDefaults = try decoder.decode(User.self, from: data)
+                  print("CURRENT USER FROM USER DEFAULTS, \(currentUserFromUserDefaults)")
+                  currentUser = currentUserFromUserDefaults
+              } catch {
+                  print("Unable to Decode User (\(error))")
+              }
+      }
+      
+      if !currentUser.emailAddress.isEmpty{
+          if let data = UserDefaults.standard.data(forKey: "KEY_TICKET_PURCHASE_LIST") {
+                do {
+                    // Create JSON Decoder
+                    let decoder = JSONDecoder()
+
+                    // Decode Note
+                    let ticketsListFromUserDefaults = try decoder.decode([TicketPurchase].self, from: data)
+                    print("LIST FROM USER DEFAULTS, \(ticketsListFromUserDefaults)")
+                    self.ticketPurchaseList = ticketsListFromUserDefaults
+                    
+                } catch {
+                    print("Unable to Decode TicketsList (\(error))")
+                }
+          }
+      }
+      return ticketPurchaseList
+  }
+    
   func addNewTicketPurchase(newPurchase: TicketPurchase) {
     self.ticketPurchaseList.append(newPurchase)
+    //find current user
+    // Read/Get Data
+    if let data = UserDefaults.standard.data(forKey: "KEY_CURRENT_USER") {
+            do {
+                // Create JSON Decoder
+                let decoder = JSONDecoder()
+
+                // Decode Note
+                let currentUserFromUserDefaults = try decoder.decode(User.self, from: data)
+                print("CURRENT USER FROM USER DEFAULTS, \(currentUserFromUserDefaults)")
+                currentUser = currentUserFromUserDefaults
+            } catch {
+                print("Unable to Decode User (\(error))")
+            }
+    }
+      if !currentUser.emailAddress.isEmpty{
+            //Adding ticket purchase to user defaults
+            do {
+                    // Create JSON Encoder
+                    let encoder = JSONEncoder()
+
+                    // Encode Ticket Purchase
+                    let data = try encoder.encode(self.ticketPurchaseList)
+
+                    // Write/Set Data
+                    self.defaults.set(data, forKey: "KEY_TICKET_PURCHASE_LIST")
+
+              } catch {
+                    print("Unable to Encode Ticket Purchase (\(error))")
+            }
+      }
   }
 
   func deleteOneTicketPurchase(indexOfPurchaseToGo: Int) {
     self.ticketPurchaseList.remove(at: indexOfPurchaseToGo)
+    //update user list from defaults
+      //Adding ticket purchase to user defaults
+      do {
+              // Create JSON Encoder
+              let encoder = JSONEncoder()
+
+              // Encode Ticket Purchase
+              let data = try encoder.encode(self.ticketPurchaseList)
+
+              // Write/Set Data
+              self.defaults.set(data, forKey: "KEY_TICKET_PURCHASE_LIST")
+
+        } catch {
+              print("Unable to Encode Ticket Purchase (\(error))")
+      }
   }
 
   //helper for ticket number range,only need getAll method

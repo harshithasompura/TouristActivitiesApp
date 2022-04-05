@@ -71,7 +71,7 @@ extension PurchaseTicketsViewController: UITableViewDelegate, UITableViewDataSou
     return 1
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return ActivityDb.shared.getAllTicketPurchase().count
+    return activitiesDb.getPurchaseListFromUserDefaults().count
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath) as! PurchaseTableViewCell
@@ -90,7 +90,7 @@ extension PurchaseTicketsViewController: UITableViewDelegate, UITableViewDataSou
     _ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath
   ) {
-    ActivityDb.shared.deleteOneTicketPurchase(indexOfPurchaseToGo: indexPath.row)
+    activitiesDb.deleteOneTicketPurchase(indexOfPurchaseToGo: indexPath.row)
     //before!
     tableView.deleteRows(at: [indexPath], with: .fade)
 

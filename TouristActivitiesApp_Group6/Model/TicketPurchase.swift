@@ -1,6 +1,6 @@
 import Foundation
 
-class TicketPurchase {
+class TicketPurchase : Codable {
   let nameOfActivity: String
   let quantity: Int
   private let price: Double

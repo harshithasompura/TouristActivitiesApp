@@ -105,13 +105,13 @@
 		E38947CD27F4D8CA0028E6FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E325C9C127FC1639003E3975 /* PurchaseTableViewCell.swift */,
 				E33D7D7C27F4B6F700D852B9 /* LogInViewController.swift */,
 				E3E397E927F50BB3001B875B /* ActivitiesViewController.swift */,
 				E34A43AA27F79583000EA7DB /* PurchaseTicketsViewController.swift */,
 				E34A43AC27F7968E000EA7DB /* FavouritesViewController.swift */,
 				E34A43AE27F797A9000EA7DB /* ActivityDetailViewController.swift */,
 				E3CC638227F7FC4700778ED9 /* ActivityCollectionViewCell.swift */,
+				E325C9C127FC1639003E3975 /* PurchaseTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

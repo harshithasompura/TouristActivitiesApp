@@ -66,7 +66,21 @@ class LogInViewController: UIViewController {
         //get remember me switch value
         let isRememberSaved = switchRememberUserLogin.isOn
         self.defaults.set(isRememberSaved, forKey: "KEY_REMEMBER_USER")
+        let currentUser = User(email: emailFromUI, password: passwordFromUI)
+          do {
+              // Create JSON Encoder
+              let encoder = JSONEncoder()
 
+              // Encode User
+              let data = try encoder.encode(currentUser)
+              
+              // Write/Set Data
+              self.defaults.set(data, forKey: "KEY_CURRENT_USER")
+              
+          } catch {
+              print("Unable to Encode User (\(error))")
+          }
+          
         //move onto next screen
         // - try to get a reference to the next screen
         guard let nextScreen = storyboard?.instantiateViewController(identifier: "TabBarController")
