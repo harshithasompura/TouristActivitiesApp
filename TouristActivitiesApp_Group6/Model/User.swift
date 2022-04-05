@@ -14,3 +14,4 @@ extension User: CustomStringConvertible {
     return "\(self.emailAddress), \(self.password)"
   }
 }
+

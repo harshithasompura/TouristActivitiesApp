@@ -22,3 +22,4 @@ class Activity {
     self.website = website
   }
 }
+

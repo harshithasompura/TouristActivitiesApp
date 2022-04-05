@@ -10,10 +10,10 @@ class ActivityCollectionViewCell: UICollectionViewCell {
 
   //MARK: Variables
   var favOn: Bool = true
-  
+
   //MARK: Data Source
   var activitiesDb = ActivityDb.shared
-    
+
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -47,3 +47,4 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     print(favouriteButton.tag)  //index the cell was clicked at
   }
 }
+

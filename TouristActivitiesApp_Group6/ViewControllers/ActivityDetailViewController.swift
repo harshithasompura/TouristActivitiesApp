@@ -137,9 +137,10 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
   func showAlert() {
     let currentPurchaseActivityName = activitiesDb.getActivityDetail().name
     let currentTicketPurchase = activitiesDb.getAllTicketPurchase().first {
-          $0.nameOfActivity == currentPurchaseActivityName
+      $0.nameOfActivity == currentPurchaseActivityName
     }
-    let costToDisplay: String = "$ " + String(format: "%.2f", currentTicketPurchase!.totalCostOfPurchase)
+    let costToDisplay: String =
+      "$ " + String(format: "%.2f", currentTicketPurchase!.totalCostOfPurchase)
     print(#function, "cost is: \(costToDisplay)")
     let alert = UIAlertController(
       title: "Total cost of your purchase: ", message: costToDisplay, preferredStyle: .alert)

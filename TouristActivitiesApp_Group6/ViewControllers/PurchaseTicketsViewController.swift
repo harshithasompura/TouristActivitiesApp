@@ -25,9 +25,10 @@ class PurchaseTicketsViewController: UIViewController {
     //tableview config
     purchaseTableView.dataSource = self
     purchaseTableView.delegate = self
-    purchaseTableView.register(UINib(nibName: "PurchaseTableViewCell", bundle:nil), forCellReuseIdentifier: "purchaseCell")
+    purchaseTableView.register(
+      UINib(nibName: "PurchaseTableViewCell", bundle: nil), forCellReuseIdentifier: "purchaseCell")
     purchaseTableView.rowHeight = 140
-      
+
     //Add signout to nav bar
     navigationItem.rightBarButtonItem = UIBarButtonItem(
       title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
@@ -43,7 +44,7 @@ class PurchaseTicketsViewController: UIViewController {
   func updateCost() {
     var cost: Double = 0
     for i in ActivityDb.shared.getAllTicketPurchase() {
-        cost = cost + i.totalCostOfPurchase
+      cost = cost + i.totalCostOfPurchase
     }
     costLabel.text = "Total Cost: $\(String(format: "%.2f", cost))"
 
@@ -74,7 +75,9 @@ extension PurchaseTicketsViewController: UITableViewDelegate, UITableViewDataSou
     return activitiesDb.getPurchaseListFromUserDefaults().count
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath) as! PurchaseTableViewCell
+    let cell =
+      purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
+      as! PurchaseTableViewCell
 
     let i = ActivityDb.shared.getAllTicketPurchase()[indexPath.row]
     cell.lblActivityName.text = "Activity: \(i.nameOfActivity)"

@@ -1,23 +1,21 @@
 import Foundation
 
-class TicketPurchase : Codable {
+class TicketPurchase: Codable {
   let nameOfActivity: String
   let quantity: Int
   private let price: Double
   let dateOfVisit: String
   var totalCostOfPurchase: Double {
-      get {
-          return Double(quantity) * price
-      }
+    return Double(quantity) * price
   }
-    
+
   init(nameOfActivity: String, quantity: Int, price: Double, dateOfVisit: String) {
     self.nameOfActivity = nameOfActivity
     self.dateOfVisit = dateOfVisit
     self.quantity = quantity
     self.price = price
   }
-    
+
 }
 
 extension TicketPurchase: CustomStringConvertible {
