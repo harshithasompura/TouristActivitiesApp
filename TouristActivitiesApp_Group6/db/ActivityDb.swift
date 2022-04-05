@@ -116,6 +116,23 @@ class ActivityDb {
   func getFavouritesList() -> [Activity] {
     return favouriteActivityList
   }
+   
+    func getCurrentUserFromUserDefaults() {
+        //Find current user from user defaults
+        if let data = UserDefaults.standard.data(forKey: "KEY_CURRENT_USER") {
+          do {
+            // Create JSON Decoder
+            let decoder = JSONDecoder()
+
+            // Decode current user
+            let currentUserFromUserDefaults = try decoder.decode(User.self, from: data)
+            print("CURRENT USER FROM USER DEFAULTS, \(currentUserFromUserDefaults)")
+            self.currentUser = currentUserFromUserDefaults
+          } catch {
+            print("Unable to Decode User (\(error))")
+          }
+        }
+    }
 
   //MARK: helpers of ticket purchases
   func getAllTicketPurchase() -> [TicketPurchase] {
@@ -123,29 +140,16 @@ class ActivityDb {
   }
 
   func getPurchaseListFromUserDefaults() -> [TicketPurchase] {
-    //get purchase list from user default
-    // Read/Get Data
-    //find current user
-    // Read/Get Data
-    if let data = UserDefaults.standard.data(forKey: "KEY_CURRENT_USER") {
-      do {
-        // Create JSON Decoder
-        let decoder = JSONDecoder()
-
-        // Decode Note
-        let currentUserFromUserDefaults = try decoder.decode(User.self, from: data)
-        print("CURRENT USER FROM USER DEFAULTS, \(currentUserFromUserDefaults)")
-        currentUser = currentUserFromUserDefaults
-      } catch {
-        print("Unable to Decode User (\(error))")
-      }
-    }
+    //get purchase list from user defaults
+    //1. find current user
+    getCurrentUserFromUserDefaults()
+    //2. get the tickets list from user defaults
     if let data = UserDefaults.standard.data(forKey: "KEY_TICKET_PURCHASE_LIST_\(currentUser)") {
       do {
         // Create JSON Decoder
         let decoder = JSONDecoder()
 
-        // Decode Note
+        // Decode tickets list
         let ticketsListFromUserDefaults = try decoder.decode([TicketPurchase].self, from: data)
         print("LIST FROM USER DEFAULTS, \(ticketsListFromUserDefaults)")
         self.ticketPurchaseList = ticketsListFromUserDefaults
@@ -159,22 +163,9 @@ class ActivityDb {
 
   func addNewTicketPurchase(newPurchase: TicketPurchase) {
     self.ticketPurchaseList.append(newPurchase)
-    //find current user
-    // Read/Get Data
-    if let data = UserDefaults.standard.data(forKey: "KEY_CURRENT_USER") {
-      do {
-        // Create JSON Decoder
-        let decoder = JSONDecoder()
-
-        // Decode Note
-        let currentUserFromUserDefaults = try decoder.decode(User.self, from: data)
-        print("CURRENT USER FROM USER DEFAULTS, \(currentUserFromUserDefaults)")
-        currentUser = currentUserFromUserDefaults
-      } catch {
-        print("Unable to Decode User (\(error))")
-      }
-    }
-    //Adding ticket purchase to user defaults
+    //1. find current user
+    getCurrentUserFromUserDefaults()
+    //2. Adding ticket purchase to user defaults
     do {
       // Create JSON Encoder
       let encoder = JSONEncoder()
@@ -193,22 +184,10 @@ class ActivityDb {
   func deleteOneTicketPurchase(indexOfPurchaseToGo: Int) {
     self.ticketPurchaseList.remove(at: indexOfPurchaseToGo)
     //update user list from defaults
-    //find current user
-    // Read/Get Data
-    if let data = UserDefaults.standard.data(forKey: "KEY_CURRENT_USER") {
-      do {
-        // Create JSON Decoder
-        let decoder = JSONDecoder()
-
-        // Decode Note
-        let currentUserFromUserDefaults = try decoder.decode(User.self, from: data)
-        print("CURRENT USER FROM USER DEFAULTS, \(currentUserFromUserDefaults)")
-        currentUser = currentUserFromUserDefaults
-      } catch {
-        print("Unable to Decode User (\(error))")
-      }
-    }
-    //Adding ticket purchase to user defaults
+      
+    //1. find current user
+    getCurrentUserFromUserDefaults()
+    //2. Adding ticket purchase to user defaults
     do {
       // Create JSON Encoder
       let encoder = JSONEncoder()
