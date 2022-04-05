@@ -68,7 +68,10 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
 
     //Set Mode for Picker since we only want date
     datePicker.datePickerMode = .date
-    datePicker.minimumDate = Date.now
+    let today = Date()
+    //setting a future date of 3 days difference from today
+    let nextDate = Calendar.current.date(byAdding: .day, value: 3, to: today)
+    datePicker.minimumDate = nextDate
 
     subViewController.view.addSubview(datePicker)
 
