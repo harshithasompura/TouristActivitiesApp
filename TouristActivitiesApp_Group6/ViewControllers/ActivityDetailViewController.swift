@@ -20,8 +20,8 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
 
   //MARK: Variables
   var ticketNumber = 1
-  var date:String = ""
-    
+  var date: String = ""
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -51,41 +51,62 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
     print(#function, "Purchase Ticket Button Pressed!")
     let screenWidth = UIScreen.main.bounds.width - 10
     let screenHeight = UIScreen.main.bounds.height / 2
-    
-    let subViewController = UIViewController() //adding a subview to display pickerview
+
+    let subViewController = UIViewController()  //adding a subview to display pickerview
     subViewController.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)
-      
-    let pickerView =  UIPickerView(frame: CGRect(x: 0, y: 10, width: screenWidth, height:screenHeight/2))
+
+    let pickerView = UIPickerView(
+      frame: CGRect(x: 0, y: 10, width: screenWidth, height: screenHeight / 2))
     subViewController.view.addSubview(pickerView)
-      
+
     pickerView.dataSource = self
     pickerView.delegate = self
-      
+
     // Creating a datePicker for selecting travel date
     let datePicker: UIDatePicker = UIDatePicker()
-    datePicker.frame = CGRect(x: -150, y: 200, width: screenWidth, height: screenHeight/2)
-    
+    datePicker.frame = CGRect(x: -150, y: 200, width: screenWidth, height: screenHeight / 2)
+
     //Set Mode for Picker since we only want date
     datePicker.datePickerMode = .date
-    datePicker.minimumDate=Date.now
-    
+    datePicker.minimumDate = Date.now
+
     subViewController.view.addSubview(datePicker)
-      
-    let alert = UIAlertController(title: "Select the number of tickets and date of travel", message: "", preferredStyle: .actionSheet)
-              
+
+    let alert = UIAlertController(
+      title: "Select the number of tickets and date of travel", message: "",
+      preferredStyle: .actionSheet)
+
     alert.popoverPresentationController?.sourceView = purchaseTicketButton
     alert.popoverPresentationController?.sourceRect = purchaseTicketButton.bounds
-      
+
     alert.setValue(subViewController, forKey: "contentViewController")
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
-          }))
-    alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
-              let formatter = DateFormatter()
-              formatter.dateFormat="yyyy-MM-dd"
-              self.date=formatter.string(from: datePicker.date)
-              print("Date of travel #\(self.date)")
-    }))
-    
+    alert.addAction(
+      UIAlertAction(
+        title: "Cancel", style: .cancel,
+        handler: { (UIAlertAction) in
+        }))
+    alert.addAction(
+      UIAlertAction(
+        title: "Select", style: .default,
+        handler: { (UIAlertAction) in
+          let formatter = DateFormatter()
+          formatter.dateFormat = "yyyy-MM-dd"
+          self.date = formatter.string(from: datePicker.date)
+          print("Date of travel #\(self.date)")
+          //creating the ticket purchase
+          let currentActivity = self.activitiesDb.getActivityDetail()
+          let nameOfTour: String = currentActivity.name
+          let price: Double = currentActivity.pricingPerPerson
+          let ticketPurchase = TicketPurchase(
+            nameOfActivity: nameOfTour, quantity: self.ticketNumber, price: price,
+            dateOfVisit: self.date)
+          self.activitiesDb.addNewTicketPurchase(newPurchase: ticketPurchase)
+
+          print(#function, "ticket purchase added: \(ticketPurchase)")
+
+          self.showAlert()
+        }))
+
     self.present(alert, animated: true, completion: nil)
   }
 
@@ -99,7 +120,7 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
     webView.load(URLRequest(url: url))
     webView.frame = view.bounds
   }
-  
+
   //MARK: Helpers/methods
   func configureActivityDetail() {
     let currentActivity = activitiesDb.getActivityDetail()
@@ -108,6 +129,20 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
     lblActivityDescription.text = currentActivity.description
     lblHostedBy.text = "Hosted by: " + currentActivity.hostedBy
     lblActivityPrice.text = "$" + String(currentActivity.pricingPerPerson) + "/ person"
+  }
+
+  func showAlert() {
+    let currentPurchaseActivityName = activitiesDb.getActivityDetail().name
+    let currentTicketPurchase = activitiesDb.getAllTicketPurchase().first {
+          $0.nameOfActivity == currentPurchaseActivityName
+    }
+    let costToDisplay: String = "$ " + String(format: "%.2f", currentTicketPurchase!.totalCostOfPurchase)
+    print(#function, "cost is: \(costToDisplay)")
+    let alert = UIAlertController(
+      title: "Total cost of your purchase: ", message: costToDisplay, preferredStyle: .alert)
+    alert.addAction(
+      UIAlertAction(title: "Ok", style: .default, handler: { ACTION in print("ok tapped") }))
+    present(alert, animated: true)
   }
 
   @objc private func signOutPressed() {
@@ -129,21 +164,24 @@ class ActivityDetailViewController: UIViewController, WKNavigationDelegate {
 }
 
 extension ActivityDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-       return 1
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return  activitiesDb.getTicketNumberRange().count;
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //Updated code to show the current item in the data source
-        return String(activitiesDb.getTicketNumberRange()[row])
-    }
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
 
-func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    ticketNumber=row+1
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return activitiesDb.getTicketNumberRange().count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)
+    -> String?
+  {
+    //Updated code to show the current item in the data source
+    return String(activitiesDb.getTicketNumberRange()[row])
+  }
+
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    ticketNumber = row + 1
     print(#function, "ticket number is \(ticketNumber)")
+  }
 }
-}
+

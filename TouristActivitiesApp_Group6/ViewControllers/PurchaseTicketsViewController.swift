@@ -41,7 +41,7 @@ class PurchaseTicketsViewController: UIViewController {
   func updateCost() {
     var cost: Double = 0
     for i in ActivityDb.shared.getAllTicketPurchase() {
-      cost = cost + i.getOnePurchaseCost()
+        cost = cost + i.totalCostOfPurchase
     }
     costLabel.text = "Total Cost: $\(String(format: "%.2f", cost))"
 
@@ -75,7 +75,8 @@ extension PurchaseTicketsViewController: UITableViewDelegate, UITableViewDataSou
     let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
 
     let i = ActivityDb.shared.getAllTicketPurchase()[indexPath.row]
-    cell.textLabel?.text = i.description
+    cell.textLabel?.text = "No. of tickets: #\(i.quantity) for \(i.nameOfActivity)"
+    cell.detailTextLabel?.text = "Total Cost: $\(i.totalCostOfPurchase)"
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
